@@ -12,6 +12,3 @@
 - [ ] README aktuell (Starten, Stack, Status)
 - [ ] Version getaggt
 - [ ] Backup von Keys, Daten und Konfiguration
-
-## Projekt fertig
-- [ ] Was würde ich beim nächsten Mal anders machen? (3 Stichpunkte ins README)
