@@ -8,11 +8,11 @@ Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, 
 |---|---|
 | `general/` | Stackübergreifend: Git-Workflow, Definition of Done, Dokumentation |
 | `templates/` | Kopiervorlagen für den Projektstart |
-| `01-android/` | Development Process, UI Guideline |
-| `02-desktop/` | Development Process, UI Guideline |
+| `01-android/` | Development Process |
+| `02-desktop/` | Development Process |
 | `03-embedded/` | Development Process, Firmware Guideline |
 | `04-electronics/` | Development Process, Design Rules |
-| `05-homelab/` | Development Process, UI Guideline, Deployment Standards |
+| `05-homelab/` | Development Process, Deployment Standards |
 
 ## Die 5 Tech-Stacks
 
@@ -33,8 +33,6 @@ Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, 
 | Tests | JUnit, MockK, Compose UI Tests |
 | Tooling / Release | Android Studio, Gradle (Kotlin DSL), Play Console, `.aab` |
 
-**Warum:** Der offizielle Google-Weg mit der besten Doku und den meisten Tutorials. Kotlin lernst du als eigene Sprache.
-
 ### 2. Desktop (Windows, evtl. Linux)
 
 **C# + Avalonia UI**
@@ -50,7 +48,6 @@ Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, 
 | Tests | xUnit, NSubstitute, Avalonia Headless Testing |
 | Tooling / Release | Rider oder VS Code, `dotnet` CLI, `dotnet publish`, Velopack, AppImage / `.deb` |
 
-**Warum:** Eine Sprache, ein Ökosystem. Läuft auf Windows und Linux ohne Anpassungen.
 
 ### 3. Embedded
 
@@ -65,7 +62,6 @@ Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, 
 | Fokus | WiFi, BLE, MQTT, OTA, Deep Sleep | Echtzeit, Timing, Bootloader, Linker Script |
 | Tests | Unity (auf dem PC), Wokwi | Logic Analyzer |
 
-**Warum:** ESP32 für Sensoren und Konnektivität, STM32 für Echtzeit und tiefes Hardware-Verständnis. C/C++ ist der Industriestandard.
 
 ### 4. Elektrotechnik
 
@@ -79,8 +75,6 @@ Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, 
 | Messtechnik | Multimeter, Oszilloskop, Logic Analyzer, Python + PyVISA (SCPI) |
 | Fertigung | JLCPCB / PCBWay, SMD-Bestückung |
 | Gehäuse | FreeCAD oder Fusion 360 |
-
-**Warum:** Der ganze Weg von Simulation über Platine bis Messung, alles kostenlos. Zwei Tracks: Grundlagen und Messen, dann Design.
 
 ### 5. Backend & Self-Hosting
 
