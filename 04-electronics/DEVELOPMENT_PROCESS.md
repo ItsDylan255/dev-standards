@@ -1,9 +1,5 @@
 # Elektrotechnik: Development Process
 
-Stack: KiCad, LTspice, Python (NumPy, SciPy, PyVISA)
-
-Von oben nach unten abarbeiten.
-
 ## 1. Anforderungen
 - [ ] Was soll die Schaltung tun? (`templates/CONCEPT.md`)
 - [ ] Spannungen, Ströme, Bandbreite, Platzgrenzen festlegen

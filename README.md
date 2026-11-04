@@ -1,6 +1,6 @@
 # dev-standards
 
-Meine persönlichen Development Standards: pro Tech-Stack ein Playbook, das ich bei jedem neuen Projekt abarbeite.
+Meine Development Standards: pro Tech-Stack ein Playbook für den Projektstart, mit festem Ablauf von Konzept bis Release und Guidelines für gutes Design. Bewusst kurz gehalten, damit ich es bei jedem neuen Projekt wirklich benutze.
 
 ## Struktur
 
@@ -16,39 +16,83 @@ Meine persönlichen Development Standards: pro Tech-Stack ein Playbook, das ich 
 
 ## Die 5 Tech-Stacks
 
-### 1. Android: Kotlin + Jetpack Compose
-- **Mit was:** Kotlin, Jetpack Compose, MVVM, Coroutines/Flow, Hilt, Room, Retrofit/Ktor
-- **Warum:** Offizieller Google-Weg mit der besten Doku. Kotlin ist als Java-Kenner schnell gelernt.
+### 1. Android
 
-### 2. Desktop: C# + Avalonia UI
-- **Mit was:** C# (.NET), Avalonia UI, MVVM (CommunityToolkit.Mvvm), EF Core + SQLite
-- **Warum:** Eine Sprache, ein Ökosystem. Läuft auf Windows und Linux ohne Anpassungen.
+**Kotlin + Jetpack Compose**
 
-### 3. Embedded: ESP32 + STM32 in C/C++
-- **Mit was:** ESP-IDF + FreeRTOS (ESP32), HAL/LL + CubeMX (STM32), I2C/SPI/UART, MQTT
-- **Warum:** ESP32 für Sensoren und Konnektivität, STM32 für Echtzeit und Hardware-Verständnis. C/C++ ist der Industriestandard.
+| Bereich | Wahl |
+|---|---|
+| Sprache / UI | Kotlin, Jetpack Compose, Material 3 |
+| Design System | Material 3 |
+| Architektur | MVVM, Unidirectional Data Flow, ViewModel + StateFlow |
+| Async | Coroutines + Flow |
+| Dependency Injection | Hilt |
+| Daten | Room (SQLite), DataStore |
+| Netzwerk | Retrofit + OkHttp oder Ktor, kotlinx.serialization |
+| Navigation | Navigation Compose |
+| Tests | JUnit, MockK, Compose UI Tests |
+| Tooling / Release | Android Studio, Gradle (Kotlin DSL), Play Console, `.aab` |
 
-### 4. Elektrotechnik: KiCad + LTspice + Python
-- **Mit was:** KiCad (Schaltplan/PCB), LTspice (Simulation), Python mit NumPy/SciPy/PyVISA (Auswertung, Messautomatisierung)
-- **Warum:** Kompletter Weg von Simulation über Platine bis Messung, alles kostenlos. Python kenne ich schon.
+**Warum:** Der offizielle Google-Weg mit der besten Doku und den meisten Tutorials. Kotlin lernst du als eigene Sprache.
 
-### 5. Homelab: Python + FastAPI + HTMX + Docker
-- **Mit was:** FastAPI, HTMX + Jinja2 + Tailwind, Typer/Textual (CLI/TUI), Docker Compose, Caddy, Mosquitto (MQTT)
-- **Warum:** Schnell zu Ergebnissen, Python ist bekannt. Passt direkt zu den ESP32-Sensoren über MQTT.
+### 2. Desktop (Windows, evtl. Linux)
 
-## Benutzung bei Projektstart
+**C# + Avalonia UI**
 
-1. Stack-Ordner öffnen, `DEVELOPMENT_PROCESS.md` von oben nach unten durchgehen.
-2. Passende Vorlagen aus `templates/` ins Projekt kopieren.
-3. Vor dem Release `general/DEFINITION_OF_DONE.md` abhaken.
+| Bereich | Wahl |
+|---|---|
+| Sprache / UI | C# (.NET LTS), Avalonia UI mit XAML |
+| Design System | Avalonia Fluent-Theme |
+| Architektur | MVVM mit CommunityToolkit.Mvvm |
+| Dependency Injection | Microsoft.Extensions.DependencyInjection |
+| Daten | EF Core + SQLite, Settings als JSON |
+| Async / Netzwerk | async/await, HttpClient, System.Text.Json |
+| Tests | xUnit, NSubstitute, Avalonia Headless Testing |
+| Tooling / Release | Rider oder VS Code, `dotnet` CLI, `dotnet publish`, Velopack, AppImage / `.deb` |
 
-## Konventionen
+**Warum:** Eine Sprache, ein Ökosystem. Läuft auf Windows und Linux ohne Anpassungen.
 
-- Fachbegriffe auf Englisch, Erklärungen auf Deutsch.
-- `DEVELOPMENT_PROCESS.md`: Ablauf eines Projekts in fester Reihenfolge (Konzept bis Release).
-- `UI_GUIDELINE.md`: wie ich ein gutes, passendes UI gestalte.
-- Lernthemen und Konzepte stehen nicht hier, sondern im Projektmanager.
+### 3. Embedded
 
-## Status
+**ESP32 (ESP-IDF) + STM32, beides in C/C++**
 
-Erste Version komplett. Bewusst kurz gehalten, wird beim Benutzen angepasst.
+| Bereich | ESP32 | STM32 |
+|---|---|---|
+| Hardware | ESP32-S3 oder -C3 | Nucleo-Board (z. B. F446RE) |
+| Framework | ESP-IDF + FreeRTOS | HAL / LL, CubeMX, später Register |
+| Tooling | VS Code + ESP-IDF, `idf.py`, GDB / OpenOCD | STM32CubeIDE, OpenOCD, SWD |
+| Schnittstellen | GPIO, ADC, I2C, SPI, UART, PWM | gleiche, dazu Timer, DMA, NVIC |
+| Fokus | WiFi, BLE, MQTT, OTA, Deep Sleep | Echtzeit, Timing, Bootloader, Linker Script |
+| Tests | Unity (auf dem PC), Wokwi | Logic Analyzer |
+
+**Warum:** ESP32 für Sensoren und Konnektivität, STM32 für Echtzeit und tiefes Hardware-Verständnis. C/C++ ist der Industriestandard.
+
+### 4. Elektrotechnik
+
+**KiCad + LTspice + Python**
+
+| Bereich | Wahl |
+|---|---|
+| Schaltplan / PCB | KiCad |
+| Simulation | LTspice (alternativ ngspice) |
+| Auswertung | Python: NumPy, SciPy, Matplotlib, Jupyter |
+| Messtechnik | Multimeter, Oszilloskop, Logic Analyzer, Python + PyVISA (SCPI) |
+| Fertigung | JLCPCB / PCBWay, SMD-Bestückung |
+| Gehäuse | FreeCAD oder Fusion 360 |
+
+**Warum:** Der ganze Weg von Simulation über Platine bis Messung, alles kostenlos. Zwei Tracks: Grundlagen und Messen, dann Design.
+
+### 5. Backend & Self-Hosting
+
+**Python + FastAPI + Docker**
+
+| Bereich | Backend (Programmieren) | Self-Hosting (Betrieb) |
+|---|---|---|
+| Kern | FastAPI, Pydantic, SQLAlchemy + Alembic | Docker Compose, Caddy |
+| Web-UI | HTMX + Jinja2 + Tailwind | — |
+| Design System | Tailwind | — |
+| Terminal | Typer (CLI), Textual (TUI) | — |
+| Daten / Messaging | SQLite, später PostgreSQL | Mosquitto (MQTT) |
+| Betrieb | uv, Ruff, pytest | restic (Backups), Prometheus + Grafana |
+| Zugriff | — | Tailscale oder WireGuard |
+| Hosting | — | Mini-PC oder Raspberry Pi mit Debian, optional Proxmox |

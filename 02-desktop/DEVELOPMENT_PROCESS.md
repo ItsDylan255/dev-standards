@@ -1,9 +1,5 @@
 # Desktop: Development Process
 
-Stack: C#, .NET, Avalonia UI, MVVM (CommunityToolkit.Mvvm), EF Core, SQLite
-
-Von oben nach unten abarbeiten.
-
 ## 1. Konzept
 - [ ] Problem und Zielgruppe in einem Satz (`templates/CONCEPT.md`)
 - [ ] Windows only oder auch Linux? Früh festlegen

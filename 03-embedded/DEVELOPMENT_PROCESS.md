@@ -1,9 +1,5 @@
 # Embedded: Development Process
 
-Stack: ESP32 (ESP-IDF, FreeRTOS) und STM32 (HAL/LL, CubeMX), C/C++
-
-Von oben nach unten abarbeiten.
-
 ## 1. Anforderungen
 - [ ] Was soll das Gerät tun? (`templates/CONCEPT.md`)
 - [ ] Messgrößen, Abtastrate, Stromversorgung (Netz oder Batterie)?

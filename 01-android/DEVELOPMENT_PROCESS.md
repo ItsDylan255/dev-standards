@@ -1,9 +1,5 @@
 # Android: Development Process
 
-Stack: Kotlin, Jetpack Compose, MVVM, Coroutines/Flow, Hilt, Room, Retrofit/Ktor
-
-Von oben nach unten abarbeiten.
-
 ## 1. Konzept
 - [ ] Problem und Zielgruppe in einem Satz (`templates/CONCEPT.md`)
 - [ ] Gibt es das schon? Was mache ich anders?
